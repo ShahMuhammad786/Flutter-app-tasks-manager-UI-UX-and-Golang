@@ -8,13 +8,15 @@ class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final double? borderRadius;
   final int? maxLines;
+  final Icon icon;
 
   const TextFieldWidget(
       {Key? key,
       required this.textController,
       required this.hintText,
-      this.borderRadius = 30,
-      this.maxLines = 1})
+      this.borderRadius = 15,
+      this.maxLines = 1,
+      required this.icon})
       : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class TextFieldWidget extends StatelessWidget {
       maxLines: maxLines,
       controller: textController,
       decoration: InputDecoration(
+          prefixIcon: icon,
           filled: true,
           fillColor: AppColors.textHolder,
           hintText: hintText,

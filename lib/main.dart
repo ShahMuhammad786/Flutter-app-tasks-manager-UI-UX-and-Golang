@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_golang_yt/controllers/data_controller.dart';
 import 'package:flutter_golang_yt/screens/Home_screen.dart';
 import 'package:flutter_golang_yt/screens/add_task.dart';
 import 'package:flutter_golang_yt/screens/all_task.dart';
+import 'package:flutter_golang_yt/screens/login.dart';
+import 'package:flutter_golang_yt/screens/register.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const MyRegister(),
     );
   }
 }

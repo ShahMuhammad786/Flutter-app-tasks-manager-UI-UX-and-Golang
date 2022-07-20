@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_golang_yt/colors/app_colors.dart';
+import 'package:flutter_golang_yt/screens/add_task.dart';
+import 'package:flutter_golang_yt/screens/home_screen.dart';
 import 'package:flutter_golang_yt/widgets/button_widgets.dart';
 import 'package:flutter_golang_yt/widgets/task_widget.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,7 @@ class AllTasks extends StatelessWidget {
     final leftEditIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
       color: const Color(0xFF2e3253).withOpacity(0.5),
+      alignment: Alignment.centerLeft,
       child: Container(
         margin: const EdgeInsets.only(left: 10),
         child: const Icon(
@@ -25,12 +28,12 @@ class AllTasks extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      alignment: Alignment.centerLeft,
     );
 
     final rightDeleteIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
       color: Colors.redAccent,
+      alignment: Alignment.centerRight,
       child: Container(
         margin: const EdgeInsets.only(right: 10),
         child: const Icon(
@@ -38,7 +41,6 @@ class AllTasks extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      alignment: Alignment.centerRight,
     );
 
     return Scaffold(
@@ -70,26 +72,33 @@ class AllTasks extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Row(
               children: [
-                Icon(
-                  Icons.home,
+                IconButton(
+                  icon: const Icon(Icons.home),
                   color: AppColors.secondaryColor,
+                  onPressed: () {
+                    Get.to(() => const HomeScreen(),
+                        transition: Transition.leftToRightWithFade,
+                        duration: const Duration(milliseconds: 500));
+                  },
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 20,
+                IconButton(
+                  icon: const Center(
+                    child: Icon(
+                      Icons.add_task,
+                      size: 20,
+                    ),
                   ),
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.5),
-                    color: Colors.black,
-                  ),
+                  // color: Colors.white,
+                  onPressed: () {
+                    Get.to(() => const AddTask(),
+                        transition: Transition.leftToRightWithFade,
+                        duration: const Duration(milliseconds: 500));
+                  },
                 ),
+
                 Expanded(child: Container()), //This is just for the space
                 Icon(
                   Icons.calendar_month_sharp,

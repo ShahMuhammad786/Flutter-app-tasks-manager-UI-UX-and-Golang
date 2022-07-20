@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_golang_yt/colors/app_colors.dart';
 import 'package:flutter_golang_yt/screens/add_task.dart';
 import 'package:flutter_golang_yt/screens/all_task.dart';
+import 'package:flutter_golang_yt/screens/login.dart';
 import 'package:flutter_golang_yt/widgets/button_widgets.dart';
 import 'package:get/get.dart';
 
@@ -26,6 +26,24 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              CircleAvatar(
+                radius: 15,
+                backgroundColor: const Color(0xff4c505b),
+                child: IconButton(
+                    color: Colors.white,
+                    onPressed: () {
+                      Get.to(() => const MyLogin(),
+                          transition: Transition.rightToLeftWithFade,
+                          duration: const Duration(seconds: 1));
+                    },
+                    icon: const Icon(
+                      Icons.logout,
+                      size: 15,
+                    )),
+              ),
+              const SizedBox(
+                height: 155,
+              ),
               RichText(
                 text: TextSpan(
                     text: "Hello",
@@ -48,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               InkWell(
                 onTap: () {
-                  Get.to(() => const AddTask(),
+                  Get.to(() => AddTask(),
                       transition: Transition.zoom,
                       duration: const Duration(milliseconds: 500));
                 },

@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_golang_yt/screens/home_screen.dart';
-import 'package:flutter_golang_yt/screens/register.dart';
+import 'package:flutter_golang_yt/screens/login.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import 'all_task.dart';
-
-class MyLogin extends StatefulWidget {
-  const MyLogin({Key? key}) : super(key: key);
+class MyRegister extends StatefulWidget {
+  const MyRegister({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _MyLoginState createState() => _MyLoginState();
+  _MyRegisterState createState() => _MyRegisterState();
 }
 
-class _MyLoginState extends State<MyLogin> {
+class _MyRegisterState extends State<MyRegister> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/login.png"), fit: BoxFit.cover),
+            image: AssetImage('assets/register.png'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         body: Stack(
           children: [
-            Container(),
             Container(
-              padding: const EdgeInsets.only(left: 35, top: 130),
+              padding: const EdgeInsets.only(left: 35, top: 30),
               child: const Text(
-                'Welcome\nBack',
+                'Create\nAccount',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5),
+                    top: MediaQuery.of(context).size.height * 0.28),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -46,11 +46,22 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
-                            style: const TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Email",
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                hintText: "Name",
+                                hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
@@ -59,12 +70,47 @@ class _MyLoginState extends State<MyLogin> {
                             height: 30,
                           ),
                           TextField(
-                            style: const TextStyle(),
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                hintText: "Email",
+                                hintStyle: const TextStyle(color: Colors.white),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          TextField(
+                            style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
                                 hintText: "Password",
+                                hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
@@ -76,9 +122,11 @@ class _MyLoginState extends State<MyLogin> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'Sign in',
+                                'Sign Up',
                                 style: TextStyle(
-                                    fontSize: 27, fontWeight: FontWeight.w700),
+                                    color: Colors.white,
+                                    fontSize: 27,
+                                    fontWeight: FontWeight.w700),
                               ),
                               CircleAvatar(
                                 radius: 25,
@@ -86,9 +134,9 @@ class _MyLoginState extends State<MyLogin> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                      Get.to(() => const HomeScreen(),
+                                      Get.to(() => const MyLogin(),
                                           transition:
-                                              Transition.leftToRightWithFade,
+                                              Transition.rightToLeftWithFade,
                                           duration: const Duration(seconds: 1));
                                     },
                                     icon: const Icon(
@@ -105,31 +153,21 @@ class _MyLoginState extends State<MyLogin> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Get.to(() => const MyRegister(),
+                                  Get.to(() => const MyLogin(),
                                       transition:
-                                          Transition.leftToRightWithFade,
+                                          Transition.rightToLeftWithFade,
                                       duration: const Duration(seconds: 1));
                                 },
                                 style: const ButtonStyle(),
                                 child: const Text(
-                                  'Sign Up',
+                                  'Sign In',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
+                                      color: Colors.white,
                                       fontSize: 18),
                                 ),
                               ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: const Text(
-                                    'Forgot Password',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18,
-                                    ),
-                                  )),
                             ],
                           )
                         ],
