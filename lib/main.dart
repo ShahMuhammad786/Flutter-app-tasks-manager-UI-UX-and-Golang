@@ -12,17 +12,9 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  loadData() async {
-    await Get.find<DataController>()
-        .getData(); //calling the method of controller
-  }
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => DataController()); //we are injecting the data to UI
-    loadData();
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
